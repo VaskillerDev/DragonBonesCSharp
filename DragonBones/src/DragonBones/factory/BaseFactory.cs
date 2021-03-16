@@ -812,11 +812,18 @@ namespace DragonBones
             this._BuildSlots(dataPackage, armature);
             this._BuildConstraints(dataPackage, armature);
             armature.InvalidUpdate(null, true);
+            this._FoldBones(dataPackage, armature); // (fold/rebase) normalize all nodes
             // Update armature pose.
             armature.AdvanceTime(0.0f);
 
             return armature;
         }
+        
+        protected virtual void _FoldBones(BuildArmaturePackage dataPackage, Armature armature)
+        {
+            throw new NotImplementedException();
+        }
+        
         /// <private/>
         public virtual void ReplaceDisplay(Slot slot, DisplayData displayData, int displayIndex = -1)
         {
