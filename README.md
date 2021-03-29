@@ -8,7 +8,21 @@
 * [Online demos](http://www.dragonbones.com/demo/index.html)
 
 ## Godot [WIP]
-Minimal skeleton animation support. Coming soon more...
+```c#
+// for example:
+Node2D anchorNode = new Node2D();
+anchorNode.Position = new Vector2(16, 16);
+GetTree().Root.GetChild(0).AddChild(anchorNode);
+
+var factory = new GodotDragonBonesFactory(GetTree());
+        
+DragonBonesData ske = factory.LoadDragonBonesData("res://assets/dragonbones/monster_ske.json", "");
+TextureAtlasData tex = factory.LoadTextureAtlasData("res://assets/dragonbones/monster_tex.json", "");
+GodotAramture armatureNode =
+    factory.BuildArmatureNode("Armature", "monster", node: anchorNode, textureAtlasName: "monster");
+        
+armatureNode.animation.Play("idle");
+```
 
 ## Online demos
 [![PerformanceTest](https://dragonbones.github.io/demo/demos.jpg)](https://github.com/DragonBones/Demos)
